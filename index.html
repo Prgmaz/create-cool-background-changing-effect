@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Home - Programmer101N</title>
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/css/styles.css" />
+	</head>
+	<body>
+		<div class="d-flex min-vh-100 min-vw-100 align-items-center">
+			<div
+				class="container-fluid min-vh-100 d-flex align-items-center flex-column justify-content-center"
+			>
+				<div class="d-flex align-items-end">
+					<h1
+						style="
+							font-size: 100px;
+							color: white;
+							font-weight: bolder;
+							border: 10px solid white;
+							border-radius: 50px;
+							padding: 20px;
+						"
+					>
+						BACKGROUND
+					</h1>
+				</div>
+				<div class="d-flex align-items-end mb-3">
+					<button class="btn btn-light mx-2" id="next">NEXT</button>
+					<button class="btn btn-light mx-2" id="back">BACK</button>
+				</div>
+			</div>
+
+			<div class="min-vh-100 min-vw-100 d-flex position-fixed" style="z-index: -10">
+				<div
+					class="min-vh-100 min-vw-100 background-1"
+					style="
+						background:
+							url(https://wallpapercave.com/wp/wp2570965.jpg);
+						background-size: cover;
+					"
+				></div>
+				<div
+					class="min-vh-100 min-vw-100 background-2"
+					style="
+						background: 
+							url(https://wallpapercave.com/wp/hPLjH8C.jpg);
+						background-size: cover;
+					"
+				></div>
+			</div>
+			<div
+				class="min-vh-100 min-vw-100 d-flex position-fixed"
+				id="outer-image"
+				style="z-index: -9; border: 0px white solid"
+			></div>
+		</div>
+	</body>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/anime.js"></script>
+	<script>
+		let next = false;
+
+		function animateBack() {
+			const timeline = new anime.timeline({
+				duration: 1000,
+			});
+			timeline.add({
+				targets: "#outer-image",
+				"border-width": [0, 200],
+				easing: "easeInOutQuad",
+			});
+			timeline.add({
+				targets: ".background-1, .background-2",
+				translateX: ["-100%", "0%"],
+				easing: "easeInOutQuad",
+			});
+			timeline.add({
+				targets: "#outer-image",
+				"border-width": [200, 0],
+				easing: "easeInOutQuad",
+			});
+		}
+
+		function animateFront() {
+			const timeline = new anime.timeline({
+				duration: 1000,
+			});
+			timeline.add({
+				targets: "#outer-image",
+				"border-width": [0, 200],
+				easing: "easeInOutQuad",
+			});
+			timeline.add({
+				targets: ".background-1, .background-2",
+				translateX: ["0%", "-100%"],
+				easing: "easeInOutQuad",
+			});
+			timeline.add({
+				targets: "#outer-image",
+				"border-width": [200, 0],
+				easing: "easeInOutQuad",
+			});
+		}
+
+		function animate() {
+			if (!next) animateFront();
+			else animateBack();
+
+			next = !next;
+		}
+
+		$("#next").click(animate);
+
+		$("#back").click(animate);
+	</script>
+</html>

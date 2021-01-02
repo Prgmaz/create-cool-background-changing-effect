@@ -1,0 +1,27 @@
+.square {
+    background: #292b2f;
+}
+
+.heading-1{
+    font-size: 42px;
+    color: white !important;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+h1 span{
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.heading-1 div{
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.background-1, .background-2{
+    z-index: -10;
+    background: linear-gradient(black 50%, black 50%);
+}
